@@ -35,9 +35,9 @@ fn main() {
         io::stdin()
             .read_line(&mut guess)
             .expect("Failed to read line");
-        // let guessed_value = input_parser(guess.clone());
         let secret_number = rand::thread_rng().gen_range(min_guess..=max_guess);
 
+        // let guessed_value = input_parser(guess.clone());
         // if guessed_value == secret_number {
         //     println!("You guessed correctly! The secret number is {secret_number}");
         //     is_guess_correctly = true;
