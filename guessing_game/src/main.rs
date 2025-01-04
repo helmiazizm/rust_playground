@@ -1,4 +1,4 @@
-use std::{i64, io};
+use std::{f64, io};
 use rand::Rng;
 
 // fn input_parser(guess: String) -> i64{
@@ -9,12 +9,12 @@ use rand::Rng;
 // }
 
 enum ParseResult {
-    Integer(i64),
+    Integer(f64),
     Error(&'static str)
 }
 
 fn input_parser_with_enum(guess: String) -> ParseResult {
-    match guess.trim().parse::<i64>() {
+    match guess.trim().parse::<f64>() {
         Ok(x) => ParseResult::Integer(x),
         Err(_) => ParseResult::Error("Unable to parse to integer")
     }
@@ -53,10 +53,10 @@ fn main() {
 
         match input_parser_with_enum(guess.clone()) {
             ParseResult::Integer(guessed_value) => {
-                if guessed_value == secret_number {
+                if guessed_value == secret_number as f64 {
                     println!("You guessed correctly! The secret number is {secret_number}");
                     is_guess_correctly = true;
-                } else if guessed_value > max_guess || guessed_value < min_guess {
+                } else if guessed_value > max_guess as f64 || guessed_value < min_guess as f64 {
                     println!("You might want to guess between {0} and {1}", min_guess, max_guess);
                 } else {
                     println!("You guessed wrong. The secret number is {secret_number}");
